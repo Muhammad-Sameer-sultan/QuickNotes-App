@@ -1,6 +1,7 @@
 const express =require('express')
 const Nodes =require("../Models/Nodes")
 const router =express.Router();
+var validator = require('validator');
 
 router.get('/',(req,res)=>{
    console.log(req.body)
