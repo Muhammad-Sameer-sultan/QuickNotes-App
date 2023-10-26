@@ -27,6 +27,7 @@ router.post(
     // lets check wheter the user with this email exist or not
     let user = await User.findOne({ email: req.body.email });
     try {
+      let success=false;
       if (user) {
         return res
           .status(400)
@@ -46,11 +47,11 @@ router.post(
       };
       const authtoken = jwt.sign(data, JWT_SECRET);
       console.log(authtoken);
-
-      res.json({ authtoken });
+      success=true
+      res.json({ success,authtoken });
     } catch (error) {
       console.log(error);
-      res.status(500).send("some error occur  ");
+      res.status(500).send({success,error:"some error occur  "});
     }
   }
 );
@@ -70,7 +71,7 @@ router.post(
     }
 
     const { email, password } = req.body;
-
+    let success=false;
     try {
       let user = await User.findOne({ email });
       if (!user) {
@@ -88,10 +89,11 @@ router.post(
       };
       const authtoken = jwt.sign(data, JWT_SECRET);
       console.log(authtoken);
-      res.json({ authtoken });
+      success=true
+      res.json({ success,authtoken });
     } catch (error) {
       console.log(error);
-      res.status(500).send("Internal server error");
+      res.status(500).send({success,error:"Internal server error"});
     }
   }
 );

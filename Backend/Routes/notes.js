@@ -10,7 +10,7 @@ router.get(
   fetchuser,
   async (req, res) => {
     const notes = await Notes.find({ user: req.user.id });
-    res.json([notes]);
+    res.json(notes);
   }
 );
 
@@ -28,6 +28,7 @@ router.post(
    // check validation for error
    const errors = validationResult(req);
    if (!errors.isEmpty()) {
+    console.log("erroe")
      return res.status(400).json({ errors: errors.array() });
    }
    // save note
