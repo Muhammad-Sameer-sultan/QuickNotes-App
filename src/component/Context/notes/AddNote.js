@@ -17,8 +17,8 @@ const AddNote = (prop) => {
       e.preventDefault();
 
       const { title, description, tag } = newNote;
-    
-      if (title.length < 3 || description.length < 5) {
+      if (title.length < 3 || description.length < 5 || tag.isnotnull	) {
+        console.log("tag")
         showAlert("danger","Failed to Add Note", "Invalid Data ")
         const updatedIsValid = { ...isValid };
     
@@ -114,12 +114,13 @@ const AddNote = (prop) => {
             name='tag'
             className="form-control"
             id="tag"
+            required
             onChange={onChangeHandler}
             value={newNote.tag}
           />
         </div>
         
-        <button type="submit" className="btn btn-primary" onClick={addNoteHandler}>
+        <button type="submit" className="btn btn-primary bg-color" onClick={addNoteHandler}>
           Add Note
         </button>
       </form>

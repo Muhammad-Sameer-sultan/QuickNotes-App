@@ -8,3 +8,39 @@ i:hover{
   cursor: pointer;
   /* font-size: 1.1rem; */
 }
+
+h1,h2,h3,h4,h5,h6{
+color: rgb(125, 9, 233);
+}
+
+label{
+  font-weight: bold;
+}
+.color{
+  color: rgb(125, 9, 233);
+}
+.bg-color{
+  background: rgb(125, 9, 233);
+  color: white;
+  font-weight: 500;
+  /* box-shadow: 0 0 0.1rem black; */
+}
+.bg-color:hover{
+  background: rgb(125, 9, 233);
+  color: white;
+  font-weight: 500;
+  
+}
+.bg-color-light:hover {
+  background: white;
+  color: rgb(125, 9, 233);
+  font-weight: 500;
+  box-shadow: 0 0 0.2rem black;
+}
+
+.bg-color-light {
+  box-shadow: 0 0 0.2rem rgb(125, 9, 233);
+  background: white;
+  color: rgb(159, 65, 247);
+  font-weight: 500;
+}

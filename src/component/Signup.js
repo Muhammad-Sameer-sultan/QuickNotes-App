@@ -45,8 +45,9 @@ return;
   
 
   return (
-    <div>
-            <h2 className="my-3">SignUp In to QuickNotes</h2>
+   <div className="p-4 ">
+     <div className="">
+            <h2 className="my-3 text-center">SignUp In to QuickNotes</h2>
 
       <form onSubmit={SignupHandler}>
         <div className="mb-3">
@@ -108,11 +109,12 @@ return;
           />
         </div>
 
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary bg-color">
           SignUp
         </button>
       </form>
     </div>
+   </div>
   );
 };
 

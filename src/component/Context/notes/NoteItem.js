@@ -13,10 +13,11 @@ const NoteItem = (props) => {
   return (
     <>
       <div className="col-6 col-sm-3 my-3">
-        <div className="card">
+        <div className="card position-relative ">
           <div className="card-body">
             <div className="d-flex justify-content-between align-items-center">
-              <h5 className="card-title">{notes.title}</h5>
+              <span className="badge position-absolute top-0 start-0 bg bg-color m-1">{notes.title}</span>
+              <h5 className="card-title mt-4">{notes.title}</h5>
               <div>
                 <i>
                   <BiSolidEdit

@@ -19,13 +19,16 @@ const Login = (props) => {
       }),
     });
     const json = await response.json();
-    console.log("mulogin",json);
     if (json.success) {
       localStorage.setItem("token", json.authtoken);
       navigate("/");
       props.showAlert("success", "Login Success", "You are login Successfully");
     } else {
       props.showAlert("danger", "Login Failed", "Invalid Email or Password");
+      setcrediential({
+        email: "",
+        password: ""
+      })
     }
   };
   const changeHandler = (e) => {
@@ -34,8 +37,9 @@ const Login = (props) => {
   };
 
   return (
-    <div className="">
-      <h2 className="my-3">Log In to QuickNotes</h2>
+    <div className="p-4">
+      <div className="">
+      <h2 className="my-3 text-center">SigIn to QuickNotes</h2>
       <form onSubmit={loginHandler}>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">
@@ -72,10 +76,11 @@ const Login = (props) => {
         </div>
        
 
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary bg-color">
           LogIn
         </button>
       </form>
+    </div>
     </div>
   );
 };

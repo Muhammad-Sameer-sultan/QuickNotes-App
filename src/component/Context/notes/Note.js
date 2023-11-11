@@ -26,7 +26,7 @@ const navigate = useNavigate();
       fetchAllNote();
     }
     else{
-      navigate('/login')
+      navigate('/signin')
 
     }
 // eslint-disable-next-line     
@@ -165,8 +165,8 @@ const checkValidation=()=>{
       </form>
       </div>
       <div className="modal-footer">
-        <button type="button" ref={myref} className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" className="btn btn-primary"  onClick={()=>{checkValidation()}}>Update</button>
+        <button type="button"  ref={myref} className="btn btn-secondary bg-color" data-bs-dismiss="modal">Close</button>
+        <button type="button" className="btn btn-primary bg-color"  onClick={()=>{checkValidation()}}>Update</button>
         
       </div>
     </div>
@@ -174,12 +174,14 @@ const checkValidation=()=>{
 </div>
 
 {/* Note item render */}
-      <div className="row my-3">
+      <div className="row my-4">
         <h2>Your Notes</h2>
-        {/* {console.log("item",notes)} */}
         {notes.length===0 && <span>No Noted Avaiable to show</span>}
         {notes.map((note, index) => note && <NoteItem showAlert={showAlert} notes={note} editNote={editNote} key={index} />)}
 
+     
+        {/* {console.log("item",notes)} */}
+       
         {/* {notes.map((note, index) => {
           if (note) {
             return <NoteItem notes={note} editNote={editNote} key={index} />;

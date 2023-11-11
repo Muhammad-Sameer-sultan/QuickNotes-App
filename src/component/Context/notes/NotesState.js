@@ -4,6 +4,7 @@ import NoteContext from "./noteContext";
 
 
 const NotesState = (props) => {
+  const [alert, setalert] = useState(null)
   const [notes, setnotes] = useState([]);
   const host = "http://localhost:5000";
 
@@ -100,9 +101,21 @@ const NotesState = (props) => {
     setnotes(newNode)
   };
 
+  const showAlert = (color, type, message) => {
+    setalert({
+      color: color,
+      type: type,
+      message: message
+    });
+    setTimeout(() => {
+        setalert(null);
+      }, 2000);
+      
+    };
+
   return (
     <NoteContext.Provider
-      value={{ notes, setnotes, addNewNote, deleteNote, updateNote,fetchAllNote }}
+      value={{ notes, setnotes, addNewNote, deleteNote, updateNote,fetchAllNote,showAlert,alert }}
     >
       {props.children}
     </NoteContext.Provider>

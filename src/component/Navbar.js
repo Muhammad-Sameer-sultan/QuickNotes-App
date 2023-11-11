@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-
+import taskIcon from '../assets/task-icon.png'
 const Navbar = () => {
   const [user, setUser] = useState(null);
   const location = useLocation();
@@ -30,12 +30,12 @@ const Navbar = () => {
 
     fetchUser();
   }, [localStorage.getItem("token")]);
-  console.log(user);
 
   const logoutHandler = (e) => {
     e.preventDefault();
     localStorage.removeItem("token");
-    navigate("/login");
+    setUser(null);
+    navigate("/signin");
   };
 
   return (
@@ -44,7 +44,12 @@ const Navbar = () => {
       data-bs-theme="dark"
     >
       <div className="container-fluid">
-        <Link className="navbar-brand" href="/">
+
+        <Link className="navbar-brand " href="/">
+          <div className="d-inline-block me-2" style={{width:"1.7rem"}}>
+
+      <img src={taskIcon}  alt="task icon" className="img-fluid"/>
+          </div>
           QuickNotes
         </Link>
         <button
@@ -58,6 +63,7 @@ const Navbar = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
+
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
@@ -83,40 +89,23 @@ const Navbar = () => {
             </li>
           </ul>
           <form className="d-flex" role="search">
-            {!localStorage.getItem("token") ? (
-              <div>
-              { location.pathname==="/signup" ? (<Link 
-
-                  to={"/login"}
-                  className="btn btn-primary mx-1 "
-                  role="button"
-                >
-                  LogIn
-                </Link>):(
-                <Link
-                  to={"/signup"}
-                  className="btn btn-primary mx-1 "
-                  role="button"
-                >
-                  Sign Up
-                </Link>)}
-              </div>
-            ) : (
-              user && (
+            
+              
+              { user && (
                 <div className="d-flex jusify-content-center align-item-center ">
-                  <div className="btn btn-primary mx-1 my-3">
+                  <div className="btn btn-primary mx-1  bg-color">
                     <i className="fas fa-user me-2"></i>
                     <span>{user.email}</span>
                   </div>
                   <button
                     onClick={logoutHandler}
-                    className="btn btn-primary mx-1 my-3"
+                    className="btn btn-primary mx-1  bg-color"
                   >
                     Logout
                   </button>
                 </div>
               )
-            )}
+              }
           </form>
         </div>
       </div>
