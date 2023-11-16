@@ -41,7 +41,7 @@ setbtnActive(e.target.name)
         </div>
         {
             isSignInActive?
-            <Login showAlert={showAlert}/>: <Signup/>
+            <Login showAlert={showAlert} handleButtonClick={handleButtonClick}/>: <Signup/>
         }
       </div>
     </div>

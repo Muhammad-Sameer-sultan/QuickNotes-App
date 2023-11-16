@@ -67,7 +67,7 @@ const Login = (props) => {
             value={crediential.password}
             onChange={changeHandler}
           />
-           <Link to="/signup">
+           <Link onClick={props.handleButtonClick}>
           <small>
             if don't have an account{" "}
             Signup Now
