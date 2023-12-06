@@ -9,7 +9,7 @@ const Signup = (props) => {
   const SignupHandler = async (e) => {
     e.preventDefault();
     if(crediential.password !== crediential.cpassword){
-      props.showAlert("danger","Sign UP Failed", "Data")
+      props.showAlert("danger","Invalid Data", "Password not match")
 return;
     }
 
@@ -25,14 +25,13 @@ return;
       }),
     });
     const json= await response.json();
-    console.log(json)
     if(json.success){
       // localStorage.setItem('token',json.authtoken)
-      navigate("/login")
-      props.showAlert("success","Sign UP Success", "You are Sign UP Successfully")
+props.handleButtonClick();
+      props.showAlert("success","Sign Up Success", "You are Sign UP Successfully")
 
     }else{
-      props.showAlert("danger","Sign UP Failed", "Invalid Data")
+      props.showAlert("danger","Sign UP Failed", json.error)
 
     }
 
@@ -45,7 +44,7 @@ return;
   
 
   return (
-   <div className="p-4 ">
+   <div className="p-4 py-2">
      <div className="">
             <h2 className="my-3 text-center">SignUp In to QuickNotes</h2>
 
@@ -97,7 +96,7 @@ return;
         </div>
         <div className="mb-3">
           <label htmlFor="cpassword" className="form-label">
-            Password
+            Confirm Password
           </label>
           <input
             type="password"

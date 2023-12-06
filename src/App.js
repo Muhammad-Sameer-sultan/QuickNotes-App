@@ -28,7 +28,7 @@ function App() {
         </div>
         <div className="container">
           <Routes>
-            <Route path="/" exact element={<Home showAlert={showAlert} />} />
+            <Route path="/" exact element={localStorage.getItem('token')? <Home showAlert={showAlert} /> : <SignInLayout />} />
             <Route path="/about" element={<About />} />
             <Route path="/signin" element={<SignInLayout />} />
             <Route path="*" element={<NotFound/>} />

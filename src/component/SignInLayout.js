@@ -7,13 +7,9 @@ const SignInLayout = () => {
 
     const{showAlert}=useContext(noteContext)
   const [isSignInActive, setSignInActive] = useState(true);
-  const [btnActive, setbtnActive] = useState("");
 
   const handleButtonClick = (e) => {
-      console.log("ss",e.target.name)
-if(e.target.name !== btnActive)
 setSignInActive((prev) => !prev);
-setbtnActive(e.target.name)
   };
 
   return (
@@ -41,7 +37,7 @@ setbtnActive(e.target.name)
         </div>
         {
             isSignInActive?
-            <Login showAlert={showAlert} handleButtonClick={handleButtonClick}/>: <Signup/>
+            <Login showAlert={showAlert} handleButtonClick={handleButtonClick}/>: <Signup handleButtonClick={handleButtonClick} showAlert={showAlert}/>
         }
       </div>
     </div>
